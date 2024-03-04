@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filters - Inkbase: The Lorcana TCG Tracking App</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #fff;
+        }
+        .filter-header {
+            text-align: center;
+            padding: 1em;
+            font-size: 1.5em;
+            background-color: #f2f2f2;
+            border-bottom: 1px solid #ccc;
+        }
+        .filter-container {
+            padding: 1em;
+        }
+        .filter-section {
+            margin-bottom: 1em;
+        }
+        .filter-section label {
+            display: block;
+            margin: 0.5em 0;
+        }
+        .filter-section input[type="text"],
+        .filter-section select {
+            width: 100%;
+            padding: 0.5em;
+            margin-top: 0.25em;
+            border: 1px solid #ccc;
+            border-radius: 0.25em;
+        }
+        .filter-section input[type="checkbox"] {
+            margin-right: 0.5em;
+        }
+        .search-button {
+            display: block;
+            width: 100%;
+            padding: 1em;
+            margin-top: 1em;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 0.25em;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .close-icon {
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            width: 24px;
+            height: 24px;
+            background: url('close_icon.svg') no-repeat center center;
+            background-size: contain;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+        }
+        
+        /* Ensure .filter-header has relative positioning for absolute positioning of the close icon */
+        .filter-header {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div class="filter-header">
+    Filters
+    <button class="close-icon" onclick="window.history.back();"></button>
+</div>
+<div class="filter-container">
+    <div class="filter-section">
+        <label for="sort-by">Sort by:</label>
+        <select id="sort-by">
+            <option value="alphabetical">Alphabetical</option>
+            <option value="inkcost">Ink Cost</option>
+            <option value="strength">Strength</option>
+            <option value="willpower">Will Power</option>
+            <option value="price">Price</option>
+            <option value="lore">Lore</option>
+            <option value="number">Number</option>
+        </select>
+    </div>
+    
+    <div class="filter-section">
+        <label>Colors:</label>
+        <label><input type="checkbox" name="colors" value="amber"> Amber (Yellow)</label>
+        <label><input type="checkbox" name="colors" value="steel"> Steel (Silver)</label>
+        <label><input type="checkbox" name="colors" value="sapphire"> Sapphire (Blue)</label>
+        <label><input type="checkbox" name="colors" value="ruby"> Ruby (Red)</label>
+        <label><input type="checkbox" name="colors" value="emerald"> Emerald (Green)</label>
+    </div>
+
+    <div class="filter-section">
+        <label for="card-text">Card Text:</label>
+        <input type="text" id="card-text" placeholder='"rush" or "bodyguard"'>
+    </div>
+
+    <div class="filter-section">
+        <label for="set">Set:</label>
+        <select id="set">
+            <option value="the_first_chapter">The First Chapter</option>
+            <option value="rise_of_the_floodborn">Rise of the Floodborn</option>
+        </select>
+    </div>
+
+    <div class="filter-section">
+        <label for="rarity">Rarity:</label>
+        <select id="rarity">
+            <option value="legendary">Legendary</option>
+            <option value="rare">Rare</option>
+            <option value="uncommon">Uncommon</option>
+            <option value="common">Common</option>
+        </select>
+    </div>
+
+    <div class="filter-section">
+        <label for="ink-cost">Ink Cost:</label>
+        <input type="text" id="ink-cost" placeholder='"<= 4" or "> 7"'>
+    </div>
+
+    <div class="filter-section">
+        <label for="cost">Cost:</label>
+        <input type="text" id="cost" placeholder='"<= 2"'>
+    </div>
+
+    <button class="search-button">Search...</button>
+</div>
+
+</body>
+</html>
