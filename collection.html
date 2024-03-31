@@ -87,10 +87,19 @@
 <body>
 
 <div class="app-header">
-    <button class="filter-button">Filter</button>
+    <button class="filter-button" id="filterButton">Filter</button>
     <input type="text" class="search-bar" placeholder="Search...">
     <div></div> <!-- Placeholder for spacing -->
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('filterButton').addEventListener('click', function() {
+            window.location.href = 'filter.html';
+        });
+    });
+    </script>
+    
 
 <div class="collection-grid">
     <!-- Repeat this block for each card in the 3x3 grid -->

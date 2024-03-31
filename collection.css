@@ -1,0 +1,35 @@
+/* Existing styles... */
+
+/* Responsive grid adjustments */
+@media (max-width: 600px) {
+    .collection-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+    }
+
+    .card {
+        margin-bottom: 10px; /* Add some space between cards */
+    }
+
+    .filter-icon, .nav-icon {
+        width: 5vw; /* Smaller icons for smaller screens */
+        height: 5vw;
+    }
+}
+
+/* Card hover/active animation for tactile feedback */
+.card:active {
+    transform: scale(0.98); /* Slightly scale down card when tapped */
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Navigation item tap feedback */
+.nav-item:active {
+    background-color: rgba(255, 255, 255, 0.2); /* Light background on tap */
+}
+
+/* Improved search bar for smaller screens */
+@media (max-width: 600px) {
+    .search-bar {
+        padding: 2vw; /* Larger padding for easier tapping */
+    }
+}

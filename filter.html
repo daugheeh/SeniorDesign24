@@ -11,6 +11,18 @@
             font-family: 'Arial', sans-serif;
             background-color: #fff;
         }
+        .back-button {
+            position: absolute; /* Positioning the button absolutely */
+            top: 10px; /* 10px from the top */
+            left: 10px; /* 10px from the left */
+            padding: 0.5em;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 0.25em;
+            font-size: 1em;
+            cursor: pointer;
+        }
         .filter-header {
             text-align: center;
             padding: 1em;
@@ -74,7 +86,7 @@
 
 <div class="filter-header">
     Filters
-    <button class="close-icon" onclick="window.history.back();"></button>
+    <button class="back-button" onclick="location.href='collection.html'">Back</button>
 </div>
 <div class="filter-container">
     <div class="filter-section">

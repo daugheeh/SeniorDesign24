@@ -23,8 +23,8 @@ async function fetchDataFromMongoDB(query){
 
 // Example of a GET endpoint to fetch data
 app.get('/api/data', async (req, res) => {
-    const data = await fetchDataFromMongoDB(req.query.cardName);
-    //const data = await fetchDataFromMongoDB("Goofy - Musketeer");
+    //const data = await fetchDataFromMongoDB(req.query.cardName);
+    const data = await fetchDataFromMongoDB("Goofy - Musketeer");
     res.json(data);
   });
   
