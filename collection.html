@@ -4,131 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collection - Inkbase: The Lorcana TCG Tracking App</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
-        }
-        .app-header {
-            background-color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1vw; /* Padding relative to the width of the screen */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        
-        .filter-icon {
-            width: 6vw; /* Icon size relative to the width of the screen */
-            height: 6vw;
-            background: url('filter-icon.svg') no-repeat center center;
-            background-size: contain;
-            cursor: pointer;
-        }
-
-        .search-bar {
-            flex-grow: 1;
-            margin: 0 1vw;
-            padding: 1vw;
-            border: 1px solid #ddd;
-            border-radius: 2vw;
-        }
-        .collection-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Three columns */
-            gap: 2vw;
-            padding: 2vw;
-            box-sizing: border-box;
-        }
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 1vw;
-            box-shadow: 0 1vw 2vw rgba(0,0,0,0.1);
-            background-color: #fff;
-            aspect-ratio: 1 / 1.4; /* Card aspect ratio */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1vw;
-        }
-        .nav-bar {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #333;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-        }
-        .nav-item {
-            color: #fff;
-            text-align: center;
-            flex-grow: 1;
-        }
-        .nav-icon {
-            display: block;
-            margin: 0 auto;
-            width: 20px;
-            height: 20px;
-            background-size: cover;
-        }
-        /* Icons can be added with background images */
-        .home-icon { background-image: url('icons/home-icon.svg'); }
-        .search-icon { background-image: url('icons/search-icon.svg'); }
-        .collection-icon { background-image: url('icons/collection-icon.svg'); }
-        .decks-icon { background-image: url('icons/decks-icon.svg'); }
-        .scan-icon { background-image: url('icons/scan-icon.svg'); }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<script src="script.js"></script>
 <div class="app-header">
     <button class="filter-button" id="filterButton">Filter</button>
     <input type="text" class="search-bar" placeholder="Search...">
     <div></div> <!-- Placeholder for spacing -->
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('filterButton').addEventListener('click', function() {
-            window.location.href = 'filter.html';
-        });
-    });
-    </script>
     
 
 <div class="collection-grid">
     <!-- Repeat this block for each card in the 3x3 grid -->
     <div class="card">
-        <img src = "https://images.lorcania.com/cards/tfc/23_en_stitch-716.webp"></img>
+        <img class="dynamic-img" data-src="https://images.lorcania.com/cards/tfc/23_en_stitch-716.webp" src="placeholder-image.jpg" alt="Card Image">
     </div>
     <div class="card">
-        <img src = "https://images.lorcania.com/cards/tfc/2_en_ariel-716.webp" ></img>
+        <img class="dynamic-img" data-src="https://images.lorcania.com/cards/tfc/2_en_ariel-716.webp" src="placeholder-image.jpg" alt="Card Image">
     </div>
     <div class="card">
-        <img src = "https://images.lorcania.com/cards/iti/2_en_bernard-716.webp" ></img>
+        <img class="dynamic-img" data-src="https://images.lorcania.com/cards/iti/2_en_bernard-716.webp" src="placeholder-image.jpg" alt="Card Image">
     </div>
-    <div class="card">        
-        <img src = "https://images.lorcania.com/cards/iti/111_en_kakamora-716.webp" ></img>
-    </div>
-    <div class="card">
-        <img src = "https://images.lorcania.com/cards/iti/143_en_gramma_tala-716.webp"></img>
+    <div class="card"> 
+        <img class="dynamic-img" data-src="https://images.lorcania.com/cards/iti/111_en_kakamora-716.webp" src="placeholder-image.jpg" alt="Card Image">       
     </div>
     <div class="card">
-        <img src = "https://images.lorcania.com/cards/rotf/96_en_bibbidi_bobbidi_boo-716.webp" ></img>
+        <img class="dynamic-img" data-src="https://images.lorcania.com/cards/iti/143_en_gramma_tala-716.webp" src="placeholder-image.jpg" alt="Card Image">
     </div>
     <div class="card">
-        <img src = "https://images.lorcania.com/cards/rotf/117_en_mulan-716.webp"></img>
-    </div>
-    <div class="card">        
-        <img src = "https://images.lorcania.com/cards/tfc/20_en_simba-716.webp" ></img>
+        <img class="dynamic-img" data-src="https://images.lorcania.com/cards/rotf/96_en_bibbidi_bobbidi_boo-716.webp" src="placeholder-image.jpg" alt="Card Image">
     </div>
     <div class="card">
-        <img src = "https://images.lorcania.com/cards/iti/197_en_olympus_would_be_that_way-716.webp" ></img>
+        <img class="dynamic-img" data-src="https://images.lorcania.com/cards/rotf/117_en_mulan-716.webp" src="placeholder-image.jpg" alt="Card Image">
+    </div>
+    <div class="card"> 
+        <img class="dynamic-img" data-src="https://images.lorcania.com/cards/tfc/20_en_simba-716.webp" src="placeholder-image.jpg" alt="Card Image">       
+    </div>
+    <div class="card">
+        <img class="dynamic-img" data-src="https://images.lorcania.com/cards/iti/197_en_olympus_would_be_that_way-716.webp" src="placeholder-image.jpg" alt="Card Image">
     </div>
     <!-- ... -->
 </div>
