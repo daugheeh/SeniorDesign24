@@ -1,45 +1,3 @@
-/* Existing styles... */
-
-/* Responsive grid adjustments */
-@media (max-width: 600px) {
-    .collection-grid {
-        grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
-    }
-
-    .card {
-        margin-bottom: 10px; /* Add some space between cards */
-    }
-
-    .filter-icon, .nav-icon {
-        width: 5vw; /* Smaller icons for smaller screens */
-        height: 5vw;
-    }
-}
-
-/* Card hover/active animation for tactile feedback */
-.card:active {
-    transform: scale(0.98); /* Slightly scale down card when tapped */
-    transition: transform 0.2s ease-in-out;
-}
-
-/* Navigation item tap feedback */
-.nav-item:active {
-    background-color: rgba(255, 255, 255, 0.2); /* Light background on tap */
-}
-
-/* Improved search bar for smaller screens */
-@media (max-width: 600px) {
-    .search-bar {
-        padding: 2vw; /* Larger padding for easier tapping */
-    }
-}
-
-.card img {
-    width: 100%; /* Make the image fill the container */
-    height: auto; /* Keep the aspect ratio */
-    border-radius: 10px; /* Optional: Rounded corners */
-}
-
 body, html {
     margin: 0;
     padding: 0;
@@ -117,3 +75,56 @@ body, html {
 .collection-icon { background-image: url('icons/collection-icon.svg'); }
 .decks-icon { background-image: url('icons/decks-icon.svg'); }
 .scan-icon { background-image: url('icons/scan-icon.svg'); }
+
+/* Responsive grid adjustments */
+@media (max-width: 600px) {
+    .collection-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+    }
+
+    .card {
+        margin-bottom: 10px; /* Add some space between cards */
+    }
+
+    .filter-icon, .nav-icon {
+        width: 5vw; /* Smaller icons for smaller screens */
+        height: 5vw;
+    }
+}
+
+/* Card hover/active animation for tactile feedback */
+.card:active {
+    transform: scale(0.98); /* Slightly scale down card when tapped */
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Navigation item tap feedback */
+.nav-item:active {
+    background-color: rgba(255, 255, 255, 0.2); /* Light background on tap */
+}
+
+/* Improved search bar for smaller screens */
+@media (max-width: 600px) {
+    .search-bar {
+        padding: 2vw; /* Larger padding for easier tapping */
+    }
+}
+
+.card img {
+    width: 100%; /* Make the image fill the container */
+    height: auto; /* Keep the aspect ratio */
+    border-radius: 10px; /* Optional: Rounded corners */
+}
+
+
+/*Card move to another html */
+.card-link {
+    text-decoration: none; /* Removes the underline */
+    color: inherit; /* Prevents color changes */
+    display: inline-block; /* Or 'block', depending on your layout */
+}
+
+.card-link:hover, .card-link:focus {
+    /* Optional: Add any hover/focus styles here */
+    box-shadow: 0 0 8px rgba(0,0,0,0.2); /* Example: Add a shadow on hover/focus */
+}

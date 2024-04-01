@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+.card-container {
+    width: 300px;
+    border-radius: 10px;
+    margin: auto;
+    text-align: center;
+    
+}
+.card-header {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 1px solid #000;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block; /* Makes the border wrap the text */
+}
+.card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.card-classifications {
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+.card-attributes {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+.card-lore {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+.card-text {
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+.card-footer {
+    font-size: 0.8em;
+    text-align: center;
+}

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collection - Inkbase: The Lorcana TCG Tracking App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="collection_style.css">
 </head>
 <body>
-<script src="script.js"></script>
+<script src="collection_script.js"></script>
 <div class="app-header">
     <button class="filter-button" id="filterButton">Filter</button>
     <input type="text" class="search-bar" placeholder="Search...">
@@ -17,9 +17,11 @@
 
 <div class="collection-grid">
     <!-- Repeat this block for each card in the 3x3 grid -->
-    <div class="card">
-        <img class="dynamic-img" data-src="https://images.lorcania.com/cards/tfc/23_en_stitch-716.webp" src="placeholder-image.jpg" alt="Card Image">
-    </div>
+    <a href="card_info.html" class="card-link">
+        <div class="card">
+            <img src="https://images.lorcania.com/cards/tfc/23_en_stitch-716.webp" alt="Card Image">
+        </div>
+    </a>
     <div class="card">
         <img class="dynamic-img" data-src="https://images.lorcania.com/cards/tfc/2_en_ariel-716.webp" src="placeholder-image.jpg" alt="Card Image">
     </div>
