@@ -47,3 +47,43 @@ body {
     font-size: 0.8em;
     text-align: center;
 }
+.back-button {
+    position: absolute; /* Positioning the button absolutely */
+    top: 10px; /* 10px from the top */
+    left: 10px; /* 10px from the left */
+    padding: 0.5em;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 0.25em;
+    font-size: 1em;
+    cursor: pointer;
+}
+.nav-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+.nav-item {
+    color: #fff;
+    text-align: center;
+    flex-grow: 1;
+}
+.nav-icon {
+    display: block;
+    margin: 0 auto;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+}
+/* Icons can be added with background images */
+.home-icon { background-image: url('icons/home-icon.svg'); }
+.search-icon { background-image: url('icons/search-icon.svg'); }
+.collection-icon { background-image: url('icons/collection-icon.svg'); }
+.decks-icon { background-image: url('icons/decks-icon.svg'); }
+.scan-icon { background-image: url('icons/scan-icon.svg'); }
