@@ -12,10 +12,10 @@
     Filters
     <button class="back-button" onclick="location.href='collection.html'">Back</button>
 </div>
-<div class="filter-container">
+<form class="filter-container" action="" onsubmit="sendSearch();return false;" id="form-page">
     <div class="filter-section">
         <label for="sort-by">Sort by:</label>
-        <select id="sort-by">
+        <select id="sort-by" name="sortBy">
             <option value="alphabetical">Alphabetical</option>
             <option value="inkcost">Ink Cost</option>
             <option value="strength">Strength</option>
@@ -37,12 +37,12 @@
 
     <div class="filter-section">
         <label for="card-text">Card Text:</label>
-        <input type="text" id="card-text" placeholder='"rush" or "bodyguard"'>
+        <input type="text" id="card-text" placeholder='"rush" or "bodyguard"' name="card-text">
     </div>
 
     <div class="filter-section">
         <label for="set">Set:</label>
-        <select id="set">
+        <select id="set" name="set">
             <option value="the_first_chapter">The First Chapter</option>
             <option value="rise_of_the_floodborn">Rise of the Floodborn</option>
         </select>
@@ -50,7 +50,7 @@
 
     <div class="filter-section">
         <label for="rarity">Rarity:</label>
-        <select id="rarity">
+        <select id="rarity" name="rarity">
             <option value="legendary">Legendary</option>
             <option value="rare">Rare</option>
             <option value="uncommon">Uncommon</option>
@@ -60,16 +60,28 @@
 
     <div class="filter-section">
         <label for="ink-cost">Ink Cost:</label>
-        <input type="text" id="ink-cost" placeholder='"<= 4" or "> 7"'>
+        <input type="text" id="ink-cost" placeholder='"<= 4" or "> 7"' name="ink-cost">
     </div>
 
     <div class="filter-section">
         <label for="cost">Cost:</label>
-        <input type="text" id="cost" placeholder='"<= 2"'>
+        <input type="text" id="cost" placeholder='"<= 2"' name="cost">
     </div>
-
-    <button class="search-button">Search...</button>
-</div>
-
+    
+    <script>
+        async function sendSearch() {
+            var form = document.getElementById("form-page");
+            var formData = new FormData(form);
+            const queryString = new URLSearchParams(formData).toString();
+            alert(queryString);
+            console.log(formData);
+            const response = await fetch("http://127.0.0.1:3000/api/data?" + queryString, {
+                method: "GET",
+            });
+            console.log(await response.json());
+        } 
+    </script>
+    <button class="search-button" type="submit">Search...</button>
+</form>
 </body>
 </html>
