@@ -14,47 +14,61 @@ app.listen(port, () => {
 
 async function fetchDataFromMongoDB(query) {
   await client.connect();
-  const dbInbase = client.db("InbaseData");
-  const InbaseData = dbInbase.collection("New Data");
-  const cardName = { "NAME": query };
-  const cardColor = {"INK": query}
-  filters = []
+  let dbInbase = client.db("InbaseData");
+  let InbaseData = dbInbase.collection("New Data");
+  filters = [];
+  filters.push(`{"RARITY": "${query.rarity}"}`);
+  filters.push(`{"SET": "${query.set}"}`);
+  if (query.inkCost != "") {
+    filters.push(`{"COST": ${query.inkCost}}`);
+  }
+  if (query.cardText != "") {
+    filters.push(`{"ABILITY": /${query.cardText}/}`);
+  }
 
-// TODO: Add filters for the other cases.
+  if (Array.isArray(query.colors)) {
+    let multiColor = '{"$or": [';
+    query.colors.forEach((element, index) => {
+      multiColor +=`{"INK": "${element}"}`;
+      if (index != query.colors.length - 1) {
+        multiColor += ", ";
+      }
+    })
+    multiColor += "]}"
+    filters.push(multiColor);
+  } 
+  else if (typeof query.colors == 'string') {
 
-if (typeof req.query.colors == 'array') {
-    filters.push(req.query.colors)
-} else if (typeof req.query.colors == 'string') {
+    if (query.colors != "") {
+      filters.push(`{"INK": "${query.colors}"}`);
+    }
+  }
 
-    filters.push({'color':req.query.colors})
-} else {
-    // No color filter
-}
-
-// TODO (add more filters for the other form fields)
-
-query = {
-    $and: filters
-    // + other properties, such as order-by
-}
-
-await collection.find(query);
-  const result = InbaseData.findOne(cardName);
+  let Query = '{"$and": [';
+  filters.forEach((element, index) => {
+    Query += element;
+    if (index != filters.length - 1) {
+      Query += ", "
+    }
+  });
+  Query += "]}";
+  console.log(Query);
+  let result = InbaseData.find(JSON.parse(Query)).toArray();
   return result;
 }
 
-// Example of a GET endpoint to fetch data
 app.get('/api/data', async (req, res) => {
-  res.set('Access-Control-Allow-Origin','*');
-  const data = await fetchDataFromMongoDB(req.query);
-  console.log(req.query);
+  //console.log(req.query);
+  res.set('Access-Control-Allow-Origin', '*');
+  console.log(await fetchDataFromMongoDB(req.query));
+  //const data = await fetchDataFromMongoDB(req.query);
   //const data = await fetchDataFromMongoDB("Goofy - Musketeer");
-  res.json(data);
+  // res.json(data);
 });
 
 // Example of a POST endpoint to store data
 //app.post('/api/users', async (req, res) => {
- // const userData = req.body;
-  //await saveDataToMongoDB(userData);
-  //res.status(201).send('User data stored');
+// const userData = req.body;
+//await saveDataToMongoDB(userData);
+//res.status(201).send('User data stored');
 //});
