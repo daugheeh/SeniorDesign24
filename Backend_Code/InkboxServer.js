@@ -23,7 +23,7 @@ async function fetchDataFromMongoDB(query) {
     filters.push(`{"COST": ${query.inkCost}}`);
   }
   if (query.cardText != "") {
-    filters.push(`{"ABILITY": /${query.cardText}/}`);
+    filters.push(`{"ABILITY": "/${query.cardText}/"}`);
   }
 
   if (Array.isArray(query.colors)) {
