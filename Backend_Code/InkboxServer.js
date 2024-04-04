@@ -17,11 +17,12 @@ async function fetchDataFromMongoDB(query) {
   let dbInbase = client.db("InbaseData");
   let InbaseData = dbInbase.collection("New Data");
   filters = [];
+  let Query = "";
+  let sort = ""
   if (false) {
 
   }
   else {
-
     if (query.rarity != "None") {
       filters.push(`{"RARITY": "${query.rarity}"}`);
     }
@@ -54,7 +55,7 @@ async function fetchDataFromMongoDB(query) {
     }
   }
 
-  let Query = '{"$and": [';
+  Query += '{"$and": [';
   filters.forEach((element, index) => {
     Query += element;
     if (index != filters.length - 1) {
@@ -63,7 +64,8 @@ async function fetchDataFromMongoDB(query) {
   });
   Query += "]}";
   console.log(Query);
-  let result = InbaseData.find(JSON.parse(Query)).toArray();
+  sort += `{ "${query.sortBY}": 1 }`;
+  let result = InbaseData.find(JSON.parse(Query)).sort(JSON.parse(sort)).toArray();
   return result;
 }
 
