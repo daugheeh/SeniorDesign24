@@ -17,8 +17,7 @@ async function fetchDataFromMongoDB(query) {
   let dbInbase = client.db("InbaseData");
   let InbaseData = dbInbase.collection("New Data");
   filters = [];
-  let Query = "";
-  let sort = ""
+  let baseQuery = "";
   if (false) {
 
   }
@@ -32,9 +31,11 @@ async function fetchDataFromMongoDB(query) {
     if (query.inkCost != "") {
       filters.push(`{"COST": ${query.inkCost}}`);
     }
+    /*
     if (query.cardText != "") {
-      filters.push(`{"ABILITY": "/${query.cardText}/"}`);
+      filters.push(`{ "ABILITY": "${new RegExp(query.cardText)}"}`);
     }
+    */
 
     if (Array.isArray(query.colors)) {
       let multiColor = '{"$or": [';
@@ -55,24 +56,36 @@ async function fetchDataFromMongoDB(query) {
     }
   }
 
-  Query += '{"$and": [';
+  baseQuery += '{"$and": [';
   filters.forEach((element, index) => {
-    Query += element;
+    baseQuery += element;
     if (index != filters.length - 1) {
-      Query += ", "
+      baseQuery += ", "
     }
   });
-  Query += "]}";
-  console.log(Query);
-  sort += `{ "${query.sortBY}": 1 }`;
-  let result = InbaseData.find(JSON.parse(Query)).sort(JSON.parse(sort)).toArray();
+  baseQuery += "]}";
+  console.log(baseQuery);
+  let queryObject = JSON.parse(baseQuery);
+  if (query.cardText !== "") {
+    if (!queryObject["$and"]) {
+      queryObject["$and"] = [];
+    }
+    queryObject["$and"].push({ "ABILITY": new RegExp(query.cardText) });
+  }
+  console.log(queryObject);
+  const sortField = query.sortBy;
+  const sort = { [sortField]: 1 };
+  console.log(sort);
+
+  let result = await InbaseData.find(queryObject).sort(sort).toArray();
+  console.log(result);
   return result;
 }
 
 app.get('/api/data', async (req, res) => {
   //console.log(req.query);
   res.set('Access-Control-Allow-Origin', '*');
-  console.log(await fetchDataFromMongoDB(req.query));
+  answer = await fetchDataFromMongoDB(req.query);
   //const data = await fetchDataFromMongoDB(req.query);
   //const data = await fetchDataFromMongoDB("Goofy - Musketeer");
   // res.json(data);

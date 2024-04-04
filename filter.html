@@ -78,7 +78,6 @@
             var form = document.getElementById("form-page");
             var formData = new FormData(form);
             const queryString = new URLSearchParams(formData).toString();
-            alert(queryString);
             console.log(formData);
             const response = await fetch("http://127.0.0.1:3000/api/data?" + queryString, {
                 method: "GET",
