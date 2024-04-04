@@ -43,15 +43,19 @@
     <div class="filter-section">
         <label for="set">Set:</label>
         <select id="set" name="set">
+            <option value="NONE">None</option>
             <option value="TFC">The First Chapter</option>
             <option value="ROTF">Rise of the Floodborn</option>
+            <option value="ITI">Into the Inklands</option>
         </select>
     </div>
 
     <div class="filter-section">
         <label for="rarity">Rarity:</label>
         <select id="rarity" name="rarity">
+            <option value="None">None</option>
             <option value="Legendary">Legendary</option>
+            <option value="Super Rare">Super Rare</option>
             <option value="Rare">Rare</option>
             <option value="Uncommon">Uncommon</option>
             <option value="Common">Common</option>
@@ -60,13 +64,15 @@
 
     <div class="filter-section">
         <label for="ink-cost">Ink Cost:</label>
-        <input type="text" id="ink-cost" placeholder='"<= 4" or "> 7"' name="inkCost">
+        <input type="text" id="ink-cost" placeholder='"4" or "7"' name="inkCost">
     </div>
-
+    
+    <!--
     <div class="filter-section">
         <label for="cost">Cost:</label>
         <input type="text" id="cost" placeholder='"<= 2"' name="cost">
     </div>
+    -->
     
     <script>
         async function sendSearch() {

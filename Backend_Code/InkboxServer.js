@@ -17,30 +17,40 @@ async function fetchDataFromMongoDB(query) {
   let dbInbase = client.db("InbaseData");
   let InbaseData = dbInbase.collection("New Data");
   filters = [];
-  filters.push(`{"RARITY": "${query.rarity}"}`);
-  filters.push(`{"SET": "${query.set}"}`);
-  if (query.inkCost != "") {
-    filters.push(`{"COST": ${query.inkCost}}`);
-  }
-  if (query.cardText != "") {
-    filters.push(`{"ABILITY": "/${query.cardText}/"}`);
-  }
+  if (false) {
 
-  if (Array.isArray(query.colors)) {
-    let multiColor = '{"$or": [';
-    query.colors.forEach((element, index) => {
-      multiColor +=`{"INK": "${element}"}`;
-      if (index != query.colors.length - 1) {
-        multiColor += ", ";
+  }
+  else {
+
+    if (query.rarity != "None") {
+      filters.push(`{"RARITY": "${query.rarity}"}`);
+    }
+    if (query.set != "None") {
+      filters.push(`{"SET": "${query.set}"}`);
+    }
+    if (query.inkCost != "") {
+      filters.push(`{"COST": ${query.inkCost}}`);
+    }
+    if (query.cardText != "") {
+      filters.push(`{"ABILITY": "/${query.cardText}/"}`);
+    }
+
+    if (Array.isArray(query.colors)) {
+      let multiColor = '{"$or": [';
+      query.colors.forEach((element, index) => {
+        multiColor += `{"INK": "${element}"}`;
+        if (index != query.colors.length - 1) {
+          multiColor += ", ";
+        }
+      })
+      multiColor += "]}"
+      filters.push(multiColor);
+    }
+    else if (typeof query.colors == 'string') {
+
+      if (query.colors != "") {
+        filters.push(`{"INK": "${query.colors}"}`);
       }
-    })
-    multiColor += "]}"
-    filters.push(multiColor);
-  } 
-  else if (typeof query.colors == 'string') {
-
-    if (query.colors != "") {
-      filters.push(`{"INK": "${query.colors}"}`);
     }
   }
 
