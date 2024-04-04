@@ -83,12 +83,9 @@ async function fetchDataFromMongoDB(query) {
 }
 
 app.get('/api/data', async (req, res) => {
-  //console.log(req.query);
   res.set('Access-Control-Allow-Origin', '*');
   answer = await fetchDataFromMongoDB(req.query);
-  //const data = await fetchDataFromMongoDB(req.query);
-  //const data = await fetchDataFromMongoDB("Goofy - Musketeer");
-  // res.json(data);
+  res.json(answer);
 });
 
 // Example of a POST endpoint to store data
