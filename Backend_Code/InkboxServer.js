@@ -19,7 +19,16 @@ async function fetchDataFromMongoDB(query) {
   filters = [];
   let baseQuery = "";
   if (false) {
+    let queryNameObject = [];
+    if (!queryNameObject["$and"]) {
+      queryNameObject["$and"] = [];
+    }
+    queryNameObject["$and"].push({ "NAME": new RegExp(query.cardText) });
 
+    const sortSearch = query.name;
+    const sortSearchCriteria = { [sortSearch]: 1 };
+    let searchResult = await InbaseData.find(queryNameObject).sort(sortSearchCriteria).toArray();
+    return searchResult;
   }
   else {
     if (query.rarity != "None") {
@@ -76,5 +85,7 @@ async function fetchDataFromMongoDB(query) {
 app.get('/api/data', async (req, res) => {
   res.set('Access-Control-Allow-Origin', '*');
   answer = await fetchDataFromMongoDB(req.query);
+  console.log(answer);
   res.json(answer);
+  return res;
 });
