@@ -79,6 +79,7 @@ async function fetchDataFromMongoDB(query) {
   const sortField = query.sortBy;
   const sort = { [sortField]: 1 };
   let result = await InbaseData.find(queryObject).sort(sort).toArray();
+  console.log(result)
   return result;
 }
 
