@@ -15,7 +15,7 @@ app.listen(port, () => {
 async function fetchDataFromMongoDB(query) {
   await client.connect();
   let dbInbase = client.db("InbaseData");
-  let InbaseData = dbInbase.collection("New Data");
+  let InbaseData = dbInbase.collection("New Data2");
   filters = [];
   let baseQuery = "";
   if (false) {
@@ -31,11 +31,6 @@ async function fetchDataFromMongoDB(query) {
     if (query.inkCost != "") {
       filters.push(`{"COST": ${query.inkCost}}`);
     }
-    /*
-    if (query.cardText != "") {
-      filters.push(`{ "ABILITY": "${new RegExp(query.cardText)}"}`);
-    }
-    */
 
     if (Array.isArray(query.colors)) {
       let multiColor = '{"$or": [';
@@ -64,7 +59,6 @@ async function fetchDataFromMongoDB(query) {
     }
   });
   baseQuery += "]}";
-  console.log(baseQuery);
   let queryObject = JSON.parse(baseQuery);
   if (query.cardText !== "") {
     if (!queryObject["$and"]) {
@@ -75,10 +69,7 @@ async function fetchDataFromMongoDB(query) {
   console.log(queryObject);
   const sortField = query.sortBy;
   const sort = { [sortField]: 1 };
-  console.log(sort);
-
   let result = await InbaseData.find(queryObject).sort(sort).toArray();
-  console.log(result);
   return result;
 }
 
@@ -87,10 +78,3 @@ app.get('/api/data', async (req, res) => {
   answer = await fetchDataFromMongoDB(req.query);
   res.json(answer);
 });
-
-// Example of a POST endpoint to store data
-//app.post('/api/users', async (req, res) => {
-// const userData = req.body;
-//await saveDataToMongoDB(userData);
-//res.status(201).send('User data stored');
-//});
