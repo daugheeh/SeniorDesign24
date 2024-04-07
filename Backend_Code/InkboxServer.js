@@ -15,7 +15,7 @@ app.listen(port, () => {
 async function fetchDataFromMongoDB(query) {
   await client.connect();
   let dbInbase = client.db("InbaseData");
-  let InbaseData = dbInbase.collection("New Data2");
+  let InbaseData = dbInbase.collection("NewData2");
   filters = [];
   let baseQuery = "";
   if (false) {
@@ -78,8 +78,8 @@ async function fetchDataFromMongoDB(query) {
   console.log(queryObject);
   const sortField = query.sortBy;
   const sort = { [sortField]: 1 };
-  let result = await InbaseData.find(queryObject).sort(sort).toArray();
-  console.log(result)
+  let result = InbaseData.find(queryObject);
+  result = await result.sort(sort).toArray();
   return result;
 }
 
