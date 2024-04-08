@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Assuming all card images have a class 'dynamic-img'
   var imgs = document.querySelectorAll('.dynamic-img');
   var modal = document.getElementById('cardModal');
   var modalContent = document.getElementById('modalCardDetails');
