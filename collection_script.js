@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="card-container">
               <div class="card-header" id="cardName">Belle Strange but Special</div>
-              <img src="CardImage" alt="card-image" class="card-image" id="cardImage">
+              <img src="https://images.lorcania.com/cards/tfc/2_en_ariel-716.webp" alt="card-image" class="card-image" id="cardImage">
               <div class="card-classifications" id="cardClassifications">
                   Classifications: Storyborn - Hero - Princess
               </div>
