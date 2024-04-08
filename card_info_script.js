@@ -88,26 +88,17 @@ app.get('/api/data', async (req, res) => {
   answer = await fetchDataFromMongoDB(req.query);
   console.log(answer);
   res.json(answer);
+  const card = res;
   return res;
 });
-
-
-async function fetchAndDisplayCard() {
-  try {
-      const response = await fetch('/api/data'); 
-      const card = await response.json(); 
-      document.getElementById('cardName').textContent = card.NAME;
-      document.getElementById('cardImage').src = card['IMAGE LINK']; 
-      document.getElementById('cardImage').alt = card.NAME;
-      document.getElementById('cardClassifications').textContent = `Classifications: ${card.CLASSIFICATIONS}`;
-      document.getElementById('cardAttributes').innerHTML = `Strength: ${card.STR} <br> Willpower: ${card.WILL} <br> Lore: ${card.LORE}`;
-      document.getElementById('cardLore').innerHTML = `Set: ${card.SET} <br> Number: ${card.CARDNUM} <br> Rarity: ${card.RARITY}`;
-      document.getElementById('cardText').innerHTML = `Card Text: <br> ${card.ABILITY}`;
-
-  } catch (error) {
-      console.error('Error fetching card data:', error);
-  }
-};
-
-// Call the function when the page loads
-fetchAndDisplayCard()
+async function sendSearchandDisplay() {
+  var form = document.getElementById("form-page");
+  var formData = new FormData(form);
+  const queryString = new URLSearchParams(formData).toString();
+  console.log(formData);
+  const response = await fetch("http://127.0.0.1:3000/api/data?" + queryString, {
+      method: "GET",
+  });
+  console.log(await response.json());
+  const card = await response.json();
+} 
