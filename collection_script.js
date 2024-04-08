@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'filter.html';
     });
 });
-
 const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://daugherty704:8Ac9nAVcO0y0kWo3@inkbase.mc8fboc.mongodb.net/";
 const client = new MongoClient(uri);
