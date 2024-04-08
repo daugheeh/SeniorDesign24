@@ -71,12 +71,7 @@
         <input type="text" id="card-name" placeholder='' name="cardName" >
     </div>
 
-    <!--
-    <div class="filter-section">
-        <label for="cost">Cost:</label>
-        <input type="text" id="cost" placeholder='"<= 2"' name="cost">
-    </div>
-    -->
+
     
     <script>
         async function sendSearch() {
@@ -98,7 +93,13 @@
     </script>
     <button class="search-button" type="submit">Search...</button>
 </form>
-    
+
+<div id="cardModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modalCardDetails"></div> <!-- This div will contain the card details -->
+    </div>
+</div>   
 
 <div class="collection-grid" id="displayGrid">
     <!-- Repeat this block for each card in the 3x3 grid -->
