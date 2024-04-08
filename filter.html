@@ -66,6 +66,10 @@
         <input type="text" id="ink-cost" placeholder='"4" or "7"' name="inkCost">
     </div>
 
+    <div class="filter-section" style="display: none;">
+        <input type="text" id="card-name" placeholder='' name="cardName" >
+    </div>
+
     <!--
     <div class="filter-section">
         <label for="cost">Cost:</label>
@@ -78,11 +82,15 @@
             var form = document.getElementById("form-page");
             var formData = new FormData(form);
             const queryString = new URLSearchParams(formData).toString();
-            console.log(formData);
+            //console.log(queryString + " checking query string in filter");
             const response = await fetch("http://127.0.0.1:3000/api/data?" + queryString, {
                 method: "GET",
             });
-            console.log(await response.json());
+            console.log("get function finised");
+            
+            console.log((await response.json())[0].NAME);
+           // console.log(response[0])
+            
         } 
     </script>
     <button class="search-button" type="submit">Search...</button>

@@ -13,11 +13,13 @@ app.listen(port, () => {
 });
 
 async function fetchDataFromMongoDB(query) {
+  console.log("get has started")
   await client.connect();
   let dbInbase = client.db("InbaseData");
   let InbaseData = dbInbase.collection("NewData2");
   filters = [];
   let baseQuery = "";
+  //console.log(query.cardName);
   if (false) {
     let queryNameObject = [];
     if (!queryNameObject["$and"]) {
@@ -75,17 +77,21 @@ async function fetchDataFromMongoDB(query) {
     }
     queryObject["$and"].push({ "ABILITY": new RegExp(query.cardText) });
   }
-  console.log(queryObject);
+  console.log("query has been parsed");
+  //console.log(queryObject);
   const sortField = query.sortBy;
   const sort = { [sortField]: 1 };
   let result = InbaseData.find(queryObject);
   result = await result.sort(sort).toArray();
+  console.log("result formmated")
   return result;
 }
 
 app.get('/api/data', async (req, res) => {
+  console.log("inside the get")
   res.set('Access-Control-Allow-Origin', '*');
   answer = await fetchDataFromMongoDB(req.query);
+  console.log("get has been got")
   console.log(answer);
   res.json(answer);
   return res;
