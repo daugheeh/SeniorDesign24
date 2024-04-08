@@ -8,32 +8,33 @@
 </head>
 <body>
   <script src="card_info_script.js"></script>
+
+  <div id="cardDetailsContainer"></div>
   <div class="filter-header">
     <button class="back-button" onclick="location.href='collection.html'">Back</button>
   </div>
   <div class="card-container">
-  <div class="card-header">
-      Belle Strange but Special
-  </div>
-  <img src="https://images.lorcania.com/cards/tfc/2_en_ariel-716.webp" alt="Belle" class="card-image">
-  <div class="card-classifications">
+    <div class="card-header" id="cardName">Belle Strange but Special</div>
+    <img src="CardImage" alt="card-image" class="card-image" id="cardImage">
+    <div class="card-classifications" id="cardClassifications">
         Classifications: Storyborn - Hero - Princess
-      </div>
-      <div class="card-attributes">
+    </div>
+    <div class="card-attributes" id="cardAttributes">
         Strength: 2 <br>
         Willpower: 4 <br>
         Lore: 1
-      </div>
-      <div class="card-lore">
+    </div>
+    <div class="card-lore" id="cardLore">
         Set: The First Chapter <br>
         Number: 142 <br>
-          Rarity: Legendary
-        </div>
-        <div class="card-text">
-          Card Text: <br>
-          Read a Book: During your turn, you may put an additional card from your hand into your inkwell facedown. <br>
-          My Favorite Part!: While you have 10 or more cards in your inkwell, this character gets +4 lore.
-        </div>
+        Rarity: Legendary
+    </div>
+    <div class="card-text" id="cardText">
+        Card Text: <br>
+        Read a Book: During your turn, you may put an additional card from your hand into your inkwell facedown. <br>
+        My Favorite Part!: While you have 10 or more cards in your inkwell, this character gets +4 lore.
+    </div>
+    
         </div>
       </div>
       <div class="nav-bar">
@@ -58,5 +59,10 @@
             Scan
         </div>
     </div>
+    <script>document.addEventListener('DOMContentLoaded', function() {
+      // Your JavaScript code here
+      fetchAndDisplayCard();
+    });
+    </script>
   </body>
 </html>
